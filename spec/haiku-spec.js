@@ -1,4 +1,4 @@
-import { syllablesInWord, countVowels, countDiphthongs, countSilentVowels, isHaiku} from './../src/backend-code';
+import { syllablesInWord, countVowels, countDiphthongs, countSilentVowels, isHaiku} from './../src/haikuChecker-code';
 
 
 describe ('SyllableTest', function(){
@@ -88,7 +88,7 @@ describe ('SyllableTest', function(){
   it('should return true/false if legal Haiku', function(){
     let line1 = "counting syllables"
     let line2 = "is harder than you might think"
-    let line3 = "papaya torque make"
+    let line3 = "papaya torque queue"
 
     expect(isHaiku(line1,line2,line3)).toEqual(true)
 
