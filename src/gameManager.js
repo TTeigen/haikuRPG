@@ -2,31 +2,26 @@
 
 let currentLocation;
 let totalLocations = 0;
+let chapters  = [];
+
+let chapter1 = new Chapter()
 
 function Chapter(name){
   this.name = name;
-}
-
-let ch1 = new Chapter("pond");
-
-function bringUpMap(){
-//user => setLocation();
 }
 
 function setLocation(location){
   currentLocation = location;
   //bringUpLocation();
 }
+//
 
-function bringUpLocation(location){
-  //shows background
-}
+// }
 
-function inputHaiku(){
-  //have check here to see if it is valid
-  //transition ghost
-  //closing process => offer closelocation to front end
-  closeLocation();
+function submitHaiku(){
+  //run haikuChecker?
+  //sets playerhaiku
+
 }
 
 function closeLocation(){
