@@ -1,6 +1,6 @@
 
 export function isHaiku(line1, line2, line3) {
-
+  debugger;
   let line1SylCounter =  0;
   let line1WordArray = line1.split(' ');
   for(let i = 0; i < line1WordArray.length; i++){
@@ -9,13 +9,13 @@ export function isHaiku(line1, line2, line3) {
 
   let line2SylCounter =  0;
   let line2WordArray = line2.split(' ');
-  for(let i = 0; i < line1WordArray.length; i++){
+  for(let i = 0; i < line2WordArray.length; i++){
     line2SylCounter += syllablesInWord(line2WordArray[i])
   }
 
   let line3SylCounter =  0;
   let line3WordArray = line3.split(' ');
-  for(let i = 0; i < line1WordArray.length; i++){
+  for(let i = 0; i < line3WordArray.length; i++){
     line3SylCounter += syllablesInWord(line3WordArray[i])
   }
 
@@ -26,28 +26,8 @@ export function isHaiku(line1, line2, line3) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export function syllablesInWord (word) {
-  debugger;
+  // debugger;
   if (specialWords[word]){
     return specialWords[word];
   } else {
@@ -57,6 +37,13 @@ export function syllablesInWord (word) {
     } else {
       vowelCount -= countDiphthongs(word);
       vowelCount -= countSilentVowels(word);
+      if (word.charAt(0) === 'y'){
+        vowelCount--;
+      }
+      //only subtracts one vowel because other is subtracted in diphthongs
+      if (word.substring(word.length - 3, word.length) === 'que'){
+        vowelCount--;
+      }
       if (vowelCount < 1){
         throw "somehow started with more than 1 vowel and returned less than 1 vowel";
       }
@@ -69,7 +56,8 @@ let vowels = ['a','e','i','o','u','y'];
 let specialWords = {
   "quiet" : 2,
   "buick" : 2,
-  "coyote": 3
+  "coyote": 3,
+  "ysera" : 3
 }
 
 //takes in word, returns number of vowels
@@ -101,7 +89,7 @@ export function countDiphthongs(word){
             if (a === "o" && b === "a" && i === (word.length - 2)){
               counter--;
             } else if (a === "y"){
-              //do nothing
+              //treat y as consonant
             } else {
               counter++;
             }

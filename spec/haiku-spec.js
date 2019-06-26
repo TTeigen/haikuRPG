@@ -4,9 +4,9 @@ import { syllablesInWord, countVowels, countDiphthongs, countSilentVowels, isHai
 describe ('SyllableTest', function(){
 
   // it('should return syllables in word', function(){
-  //   expect(syllablesInWord('word')).toEqual(3);
+  //   expect(syllablesInWord('yellow')).toEqual(2);
   // });
-  //
+  //you
   // // it('should return syllables in word the second', function(){
   // //   expect(syllablesInWord('word')).toEqual(2);
   // // })
@@ -88,7 +88,7 @@ describe ('SyllableTest', function(){
   it('should return true/false if legal Haiku', function(){
     let line1 = "counting syllables"
     let line2 = "is harder than you might think"
-    let line3 = "coyote marquee"
+    let line3 = "papaya torque make"
 
     expect(isHaiku(line1,line2,line3)).toEqual(true)
 
