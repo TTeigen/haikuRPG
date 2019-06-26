@@ -1,4 +1,4 @@
-import { syllablesInWord, countVowels, countDiphthongs, countSilentVowels} from './../src/backend-code';
+import { syllablesInWord, countVowels, countDiphthongs, countSilentVowels, isHaiku} from './../src/backend-code';
 
 
 describe ('SyllableTest', function(){
@@ -44,40 +44,54 @@ describe ('SyllableTest', function(){
   // it('should return the number of silent vowels3', function(){
   //   expect(countSilentVowels("le")).toEqual(0);
   // });
-  it('return syllables in a word 1', function(){
-    expect(syllablesInWord("house")).toEqual(1);
-  });
+  // it('return syllables in a word 1', function(){
+  //   expect(syllablesInWord("marquee")).toEqual(2);
+  // });
+  // it('return syllables in a word 2', function(){
+  //   expect(syllablesInWord("peanut")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 3', function(){
+  //   expect(syllablesInWord("Trever")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 4', function(){
+  //   expect(syllablesInWord("Emerson")).toEqual(3);
+  // });
+  //
+  // it('return syllables in a word 5', function(){
+  //   expect(syllablesInWord("roundhouse")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 6', function(){
+  //   expect(syllablesInWord("blackguard")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 7', function(){
+  //   expect(syllablesInWord("tickle")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 8', function(){
+  //   expect(syllablesInWord("outside")).toEqual(2);
+  // });
+  //
+  // it('return syllables in a word 9', function(){
+  //   expect(syllablesInWord("tyranosaurus")).toEqual(5);
+  // });
+  // it('return syllables in a word 10', function(){
+  //   expect(syllablesInWord("tree")).toEqual(1);
+  // });
+  // it('return syllables in a word 11', function(){
+  //   expect(syllablesInWord("shoe")).toEqual(1);
+  // });
 
-  it('return syllables in a word 2', function(){
-    expect(syllablesInWord("peanut")).toEqual(2);
-  });
+  it('should return true/false if legal Haiku', function(){
+    let line1 = "counting syllables"
+    let line2 = "is harder than you might think"
+    let line3 = "coyote marquee"
 
-  it('return syllables in a word 3', function(){
-    expect(syllablesInWord("Trever")).toEqual(2);
-  });
+    expect(isHaiku(line1,line2,line3)).toEqual(true)
 
-  it('return syllables in a word 4', function(){
-    expect(syllablesInWord("Emerson")).toEqual(3);
-  });
-
-  it('return syllables in a word 5', function(){
-    expect(syllablesInWord("roundhouse")).toEqual(2);
-  });
-
-  it('return syllables in a word 6', function(){
-    expect(syllablesInWord("blackguard")).toEqual(2);
-  });
-
-  it('return syllables in a word 7', function(){
-    expect(syllablesInWord("tickle")).toEqual(2);
-  });
-
-  it('return syllables in a word 8', function(){
-    expect(syllablesInWord("outside")).toEqual(2);
-  });
-
-  it('return syllables in a word 9', function(){
-    expect(syllablesInWord("tyranosaurus")).toEqual(5);
-  });
+  })
 
 });

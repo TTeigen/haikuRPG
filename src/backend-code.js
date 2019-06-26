@@ -1,3 +1,51 @@
+
+export function isHaiku(line1, line2, line3) {
+
+  let line1SylCounter =  0;
+  let line1WordArray = line1.split(' ');
+  for(let i = 0; i < line1WordArray.length; i++){
+    line1SylCounter += syllablesInWord(line1WordArray[i])
+  }
+
+  let line2SylCounter =  0;
+  let line2WordArray = line2.split(' ');
+  for(let i = 0; i < line1WordArray.length; i++){
+    line2SylCounter += syllablesInWord(line2WordArray[i])
+  }
+
+  let line3SylCounter =  0;
+  let line3WordArray = line3.split(' ');
+  for(let i = 0; i < line1WordArray.length; i++){
+    line3SylCounter += syllablesInWord(line3WordArray[i])
+  }
+
+  if (line1SylCounter === 5 && line2SylCounter === 7 && line3SylCounter === 5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function syllablesInWord (word) {
   debugger;
   if (specialWords[word]){
@@ -20,10 +68,11 @@ export function syllablesInWord (word) {
 let vowels = ['a','e','i','o','u','y'];
 let specialWords = {
   "quiet" : 2,
-  "buick" : 2
-
+  "buick" : 2,
+  "coyote": 3
 }
-//get vowels
+
+//takes in word, returns number of vowels
 export function countVowels(word) {
   let counter = 0;
   for (let i =0; i<word.length; i++) {
@@ -64,8 +113,8 @@ export function countDiphthongs(word){
   return counter;
 }
 
-//if last 2 == le and previous letter != vowel do nothing else  +1
 
+//takes in word, returns number of silent 'e's, double vowel at end of word is not considered a silent e
 export function countSilentVowels(word) {
   let counter = 0;
   if (word.charAt(word.length-1) === 'e') {
@@ -75,59 +124,11 @@ export function countSilentVowels(word) {
       } else {
         //do nothing
       }
+    } else if (countVowels(word.charAt(word.length -2))){
+      //do nothing
     } else {
       counter++
     }
   }
   return counter;
 }
-
-
-
-
-
-
-
-
-
-
-
-//subtract methods:
-//vowels -= yBeforeVowel(word)
-//y before vowel: coyote: return 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// vowelCount++
-//
-// if eindexOf == word.length
-//   vowelCount--
-//
-// cap a ble
-// a ble
-//yes
-//yellow
-//y before vowel === subtract 1
-// fum ble
-// tic kle
-//
-// name
-// tale
