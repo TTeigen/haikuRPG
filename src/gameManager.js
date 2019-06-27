@@ -1,39 +1,34 @@
+import {Chapter} from './chapter';
 //object currentlocation
 
 let currentLocation;
 let totalLocations = 0;
 let chapters  = [];
+let masterHaiku = ["An old silent pond...", "A frog jumps into the pond,","splash! Silence again."]
+let ch1 = new Chapter ("Pond", "file.name", "Matsuo Basho", masterHaiku);
 
-let chapter1 = new Chapter()
+chapters.push(ch1);
 
-function Chapter(name){
-  this.name = name;
-}
-
-function setLocation(location){
-  currentLocation = location;
+export function setLocation(location){
+  currentLocation = chapters[location];
   //bringUpLocation();
 }
 //
 
 // }
 
-function submitHaiku(){
+export function submitHaiku(haiku){
   //run haikuChecker?
   //sets playerhaiku
-
+  currentLocation.setHaiku(haiku);
 }
 
-function closeLocation(){
+export function removeLocation(){
   //if totallocations > gameEndCount
   currentLocation = false;
   //bringUpMap();
 }
 
-function bringUpFinalScreen(){
-
+export function getLocation() {
+  return currentLocation;
 }
-
-setLocation(ch1);
-bringUpLocation(ch1);
-inputHaiku(haiku);
