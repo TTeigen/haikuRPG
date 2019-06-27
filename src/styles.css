@@ -1,9 +1,44 @@
 .location {
   display: none;
+  margin-left: 6.5vw;
+  height: 60vh;
+  width: 75vw;
+  position: absolute;
+  max-height: 75%;
+  z-index: 2;
 }
+
 #backToMap {
   display: none;
 }
 .judgement {
+  display: none;
+}
+locationImg{
+  width: 200px;
+  height: 200px;
+
+}
+
+#locations{
+  list-style: none;
+}
+
+.haiku2{
+    display: none;
+    position: absolute;
+    max-width: 10vw;
+    z-index: 3;
+    background-color: lightblue;
+}
+.haiku1{
+    display: none;
+    position: absolute;
+    max-width: 10vw;
+    z-index: 3;
+    background-color: lightblue;
+}
+
+.hidden{
   display: none;
 }

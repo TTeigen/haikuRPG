@@ -10,7 +10,10 @@ let currentLocationFrontEnd;
 let clientMapLocation;
 $(function() {
   showMap();
-
+  $(".haiku1").hide();
+  $(".haiku2").hide();
+  $(".location").hide();
+  //$(".narrative").hide();
 
   $(".haikuInput").submit(function(event){
     event.preventDefault();
@@ -62,13 +65,14 @@ function showMap(){
   $(".mapScreen").show();
   let map = getMap();
   map.forEach(function(mapSpot){
-    $("#locations").append("<li value = " + mapSpot.reference + ">" + mapSpot.toString() + "</li>");
+    //$("#locations").append("<li value = " + mapSpot.reference + ">" + mapSpot.toString() + "</li>");
+    $("#locations").append("<li value = " + mapSpot.reference + "><img src='" + mapSpot.thumbnail + "'></li>");
     //dont know IF PROTYTP{E OF } PBJECT PASSED WITHOUT IMPORT
   });
   document.getElementById("locations").addEventListener("click",function(e) {
-        if(e.target && e.target.nodeName == "LI") {
-          console.log(e.target.value);
-          chooseLocation(getMapObjectByRef(e.target.value));
+        if(e.target && e.target.parentNode.nodeName == "LI") {
+          console.log(e.target.parentNode.value);
+          chooseLocation(getMapObjectByRef(e.target.parentNode.value));
           closeMap();
         }
     });
@@ -90,6 +94,7 @@ function chooseLocation(mapLocation){
 
 function bringUpLocation(currentLocation){
   $(".location").show();
+
   $(".haikuInput").show();
   $(".narrative").show();
   $(".narrative").text(currentLocation.introNarrative + " " + currentLocation.ghostHaiku[0]);
@@ -102,16 +107,40 @@ function bringUpLocation(currentLocation){
 
 function ghostProceedings(currentLocation){
   clientMapLocation.setCompleted();
-  $(".haiku2").show();
-  $(".haiku1").show();
-
   $(".haiku2").text(currentLocation.ghostHaiku[0] + "\n" + currentLocation.ghostHaiku[1] + "\n" + currentLocation.ghostHaiku[2]);
 
   $(".haiku1").text(currentLocation.playerHaiku[0] + "\n" + currentLocation.playerHaiku[1] + "\n" + currentLocation.playerHaiku[2]);
-  $("#backToMap").show();
+
+  placeHaiku();
+  //haiku1:
+  //divtemplate clone
+  //set text to haiku
+  //set top and left
+  //screenContainer.appendChild(node)
+
+  setTimeout(function(){
+    $(".haiku1").fadeIn();
+  }, 500);
+  setTimeout(function(){
+    $(".haiku2").fadeIn();
+  }, 1000);
+
+}
+function placeHaiku(){
+  let haiku1query = document.querySelector(".haiku1");
+  let haiku2query = document.querySelector(".haiku2");
+
+       haiku1query.style.top = 500 + 'px';
+       haiku1query.style.left = 500 + 'px';
+
+       haiku2query.style.top = 300 + 'px';
+       haiku2query.style.left = 300 + 'px';
+
+
 }
 
 //to do LIST:
 
 //figure out how to set background location css in js
 //hide narrative show 'ghost approaching' after submit
+//give different locations for text
