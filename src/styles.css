@@ -1,28 +1,93 @@
+body{
+  background-color: #242120 !important;
+}
+
+.mapScreen{
+  color: lavender;
+  text-align: center;
+}
+
 .location {
+  padding-top: 20px;
+  background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/journal-page-background-3.jpg");
   display: none;
-  margin-left: 6.5vw;
-  height: 60vh;
-  width: 75vw;
-  position: absolute;
-  max-height: 75%;
+
+  margin: 150px;
+  margin-top: 100px;
+  height: 850px;
+  width: 900px;
   z-index: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+button {
+  width: 150px;
+  text-align: center;
+}
+#submit {
+  position: absolute;
+  z-index: 3;
+  background-color: lightblue;
+  margin-left: 680px;
+  margin-top: -35px;
 }
 
 #backToMap {
   display: none;
+  background: rgba(100, 100, 100, 0.35);
+  margin-top: 2px;
 }
+
 .judgement {
   display: none;
 }
 locationImg{
   width: 200px;
   height: 200px;
-
 }
 
 #locations{
   list-style: none;
 }
+
+.scene{
+  margin: auto;
+  margin-bottom: 10px;
+  width: 850px;
+  min-height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://ak8.picdn.net/shutterstock/videos/4589588/thumb/9.jpg"), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:soft-light;
+}
+
+.scene0{
+  background-image: url("https://ak8.picdn.net/shutterstock/videos/4589588/thumb/9.jpg"), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:soft-light;
+}
+
+.scene1{
+  background-image: url("https://www.publicdomainpictures.net/pictures/190000/nahled/tree-silhouette-in-nature.jpg"), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:soft-light;
+}
+
+.scene2{
+  background-image: url("https://media.istockphoto.com/photos/dramatic-nighttime-sky-and-clouds-with-large-full-moon-picture-id186328599?k=6&m=186328599&s=612x612&w=0&h=_DYyOzGASTPqQr1-C7tB1bil0NCZHWtgUVA4b3A16zE="), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:soft-light;
+}
+
+.scene3{
+  background-image: url("http://1.bp.blogspot.com/-7E9oXQ6RqbQ/TwTpsnKodQI/AAAAAAAAECM/Icd7dpj8p_E/s1600/img945.jpg"), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:soft-light;
+}
+
+.scene4{
+  background-image: url("https://data.whicdn.com/images/316634574/large.jpg"), url("https://images.all-free-download.com/images/graphicthumb/wood_background_hd_picture_4_169843.jpg");
+  background-blend-mode:darken;
+}
+
+
 
 .haiku2{
     display: none;
@@ -38,7 +103,32 @@ locationImg{
     z-index: 3;
     background-color: lightblue;
 }
+form {
+  padding: 20px;
+  padding-bottom: 0px;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px outset grey;
+}
+.narrative {
+  margin: 5px;
+  margin-left: 15px;
+  border: 5px groove gray;
+  padding: 10px;
+  border-radius: 10%;
+  background: rgba(224, 220, 202, .5);
+}
+label {
+  width: 200px;
+  margin-right: 100px;
+}
+#line2 {
+  width: 250px;
+}
 
-.hidden{
-  display: none;
+.mapImage img{
+  width: 300px;
+  float: left;
+  margin: 50px;
+  padding: 30px;
+  background-color: brown;
 }

@@ -40,6 +40,7 @@ $(function() {
     //put all this in "close location"
     currentLocationFrontEnd = null;
     removeLocation();
+    $(".scene").removeClass('scene' + clientMapLocation.reference);
     $(".narrative").hide();
     $(".haiku2").hide();
     $(".haiku1").hide();
@@ -66,7 +67,7 @@ function showMap(){
   let map = getMap();
   map.forEach(function(mapSpot){
     //$("#locations").append("<li value = " + mapSpot.reference + ">" + mapSpot.toString() + "</li>");
-    $("#locations").append("<li value = " + mapSpot.reference + "><img src='" + mapSpot.thumbnail + "'></li>");
+    $("#locations").append("<li class = 'mapImage' value = " + mapSpot.reference + "><img src='" + mapSpot.thumbnail + "'></li>");
     //dont know IF PROTYTP{E OF } PBJECT PASSED WITHOUT IMPORT
   });
   document.getElementById("locations").addEventListener("click",function(e) {
@@ -94,9 +95,10 @@ function chooseLocation(mapLocation){
 
 function bringUpLocation(currentLocation){
   $(".location").show();
-
+  $("#backToMap").show();
   $(".haikuInput").show();
   $(".narrative").show();
+  $(".scene").addClass('scene' + clientMapLocation.reference);
   $(".narrative").text(currentLocation.introNarrative + " " + currentLocation.ghostHaiku[0]);
   if (currentLocation.playerHaiku) {
     ghostProceedings(currentLocation);
@@ -112,11 +114,7 @@ function ghostProceedings(currentLocation){
   $(".haiku1").text(currentLocation.playerHaiku[0] + "\n" + currentLocation.playerHaiku[1] + "\n" + currentLocation.playerHaiku[2]);
 
   placeHaiku();
-  //haiku1:
-  //divtemplate clone
-  //set text to haiku
-  //set top and left
-  //screenContainer.appendChild(node)
+
 
   setTimeout(function(){
     $(".haiku1").fadeIn();
@@ -126,15 +124,15 @@ function ghostProceedings(currentLocation){
   }, 1000);
 
 }
-function placeHaiku(){
+function placeHaiku(){ //inherit values from location
   let haiku1query = document.querySelector(".haiku1");
   let haiku2query = document.querySelector(".haiku2");
+       haiku1query.style.top = currentLocationFrontEnd.haikuPositions[0] + 'px';
+       haiku1query.style.left = currentLocationFrontEnd.haikuPositions[1] + 'px';
 
-       haiku1query.style.top = 500 + 'px';
-       haiku1query.style.left = 500 + 'px';
+       haiku2query.style.top = currentLocationFrontEnd.haikuPositions[2] + 'px';
+       haiku2query.style.left = currentLocationFrontEnd.haikuPositions[3] + 'px';
 
-       haiku2query.style.top = 300 + 'px';
-       haiku2query.style.left = 300 + 'px';
 
 
 }

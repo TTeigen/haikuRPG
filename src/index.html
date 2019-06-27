@@ -4,25 +4,27 @@
   <title>Project Name</title>
 </head>
 <body>
-
-
   <div class="mapScreen">
-    map screen
+    <h1>Haiku Adventure!</h1>
+    <h2>Follow the footsteps of the masters and write your own haikus!</h2>
+
     <ul id = "locations">
 
     </ul>
 
   </div>
 
-  <div class="location container-fluid">
+  <div class="location ">
+    <div class="scene">
 
-    <div class="haiku1">
+      <div class="haiku1">
 
+      </div>
+      <div class="haiku2">
+
+      </div>
     </div>
-    <div class="haiku2">
 
-    </div>
-    
     <div class="narrative">
 
     </div>
@@ -30,17 +32,24 @@
       <p>That is not a haiku! (according to our algorithm.) Make sure it is 17 syllables total with a 5,7,5 pattern</p>
     </div>
     <form class="haikuInput" action="index.html" method="post">
-      <label for="line1">First Line (5 syllables)</label>
-      <input id = "line1" name="" value="">
-      <label for="line2">Second Line (7 syllables)</label>
-      <input id = "line2" name="" value="">
-      <label for="line3">Third Line (5 syllables)</label>
-      <input id = "line3" name="" value="">
-      <button type="submit" name="button">submit haiku</button>
+
+      <div class="line1Div">
+        <label for="line1">First Line (5 syllables)</label>
+        <input id = "line1" name="" value="">
+      </div>
+      <div class="line2Div">
+        <label for="line2">Second Line (7 syllables)</label>
+        <input id = "line2" name="" value="">
+      </div>
+      <div class="line3Div">
+        <label for="line3">Third Line (5 syllables)</label>
+        <input id = "line3" name="" value="">
+      </div>
+
+      <button type="submit" id = "submit">Submit Haiku</button>
     </form>
-    <label for="backToMap">Back to map</label>
-    <button id = "backToMap" type="button" name="button"></button>
-      <img src="#" class="hal" hidden="hidden" id="hal">
+    <button id = "backToMap" type="button" name="button">Back to Map</button>
+
   </div>
 
 
