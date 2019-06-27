@@ -88,7 +88,7 @@ describe ('SyllableTest', function(){
   it('should return true/false if legal Haiku', function(){
     let line1 = "counting syllables"
     let line2 = "is harder than you might think"
-    let line3 = "papaya torque queue"
+    let line3 = "coyote marquee"
 
     expect(isHaiku(line1,line2,line3)).toEqual(true)
 

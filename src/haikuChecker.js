@@ -1,6 +1,8 @@
 
-export function isHaiku(line1, line2, line3) {
-  debugger;
+export function isHaiku(haiku) {
+  let line1 = haiku[0];
+  let line2 = haiku[1];
+  let line3 = haiku[2];
   let line1SylCounter =  0;
   let line1WordArray = line1.split(' ');
   for(let i = 0; i < line1WordArray.length; i++){
@@ -32,7 +34,9 @@ export function syllablesInWord (word) {
     return specialWords[word];
   } else {
     let vowelCount = countVowels(word);
-    if (vowelCount === 1){
+    if (vowelCount < 1){
+      return false;
+    } else if (vowelCount === 1){
       return 1;
     } else {
       vowelCount -= countDiphthongs(word);
@@ -57,7 +61,8 @@ let specialWords = {
   "quiet" : 2,
   "buick" : 2,
   "coyote": 3,
-  "ysera" : 3
+  "ysera" : 3,
+  "fbi" : 3
 }
 
 //takes in word, returns number of vowels
@@ -120,3 +125,5 @@ export function countSilentVowels(word) {
   }
   return counter;
 }
+
+//to do: acronyms

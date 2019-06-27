@@ -3,19 +3,14 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { setLocation, submitHaiku, getLocation, removeLocation } from './gameManager';
+import {getMap, getMapObjectByRef} from './map';
+import { isHaiku } from './haikuChecker';
 // import { Constructor-Name } from './backend-code';
 let currentLocationFrontEnd;
+let clientMapLocation;
 $(function() {
+  showMap();
 
-  $("#chooseLocation").click(function(event){
-    setLocation(0);
-    currentLocationFrontEnd = getLocation();
-    //close map
-    $(".mapScreen").hide();
-    //bring up location
-
-    bringUpLocation(currentLocationFrontEnd);
-  });
 
   $(".haikuInput").submit(function(event){
     event.preventDefault();
@@ -23,16 +18,19 @@ $(function() {
     let line2 = $("input#line2").val();
     let line3 = $("input#line3").val();
     let haiku = [line1, line2, line3];
-    submitHaiku(haiku);
 
     //check if haiku is legit
-    //empty values
-    $("input#line1").val("");
-    $("input#line2").val("");
-    $("input#line3").val("");
-    //close form
-    $(".haikuInput").hide()
-    ghostProceedings(currentLocationFrontEnd);
+    if (isHaiku(haiku)) {
+      submitHaiku(haiku);
+      //close form
+      $(".haikuInput").hide()
+      ghostProceedings(currentLocationFrontEnd);
+    } else {
+      $(".judgement").show();
+
+      //override button or form input
+    }
+
   });
 
   $("#backToMap").click(function(event){
@@ -48,63 +46,72 @@ $(function() {
     $(".location").hide();
     //hide button
     $("#backToMap").hide();
+    //empty values
+    $("input#line1").val("");
+    $("input#line2").val("");
+    $("input#line3").val("");
+    $(".judgement").hide();
     //show map
     showMap();
 
   });
-
-
-  //submit: get value of three fields, check if haiku, backEnd: submithaiku
-  //display your haiku on image,
-  //then ghost shows up, with ghost poem,
-  //then next location button
-
-
-  //nextlocationButton: backend.closeLocation
-  //close out all this stuff
-  //bringUpMap()
-
-  //backEnd.setLocation();
-  //display location stuff--getting values from backend
 });
 
 function showMap(){
   //bring up map
   $(".mapScreen").show();
-
+  let map = getMap();
+  map.forEach(function(mapSpot){
+    $("#locations").append("<li value = " + mapSpot.reference + ">" + mapSpot.toString() + "</li>");
+    //dont know IF PROTYTP{E OF } PBJECT PASSED WITHOUT IMPORT
+  });
+  document.getElementById("locations").addEventListener("click",function(e) {
+        if(e.target && e.target.nodeName == "LI") {
+          console.log(e.target.value);
+          chooseLocation(getMapObjectByRef(e.target.value));
+          closeMap();
+        }
+    });
 }
 
 function closeMap(){
-  //hide map
-  //bringuplocation
+  $(".mapScreen").hide();
+  $("#locations").html("");
+}
+
+function chooseLocation(mapLocation){
+  //these will match
+  clientMapLocation = mapLocation;
+  setLocation(clientMapLocation.reference);
+  currentLocationFrontEnd = getLocation();
+  bringUpLocation(currentLocationFrontEnd);
+
 }
 
 function bringUpLocation(currentLocation){
-  //do a bunch of stuff in html
-  //figure out how to set background location css in js
-  //set background image of location
-  //show location
   $(".location").show();
   $(".haikuInput").show();
-  //show introNarrative
   $(".narrative").show();
   $(".narrative").text(currentLocation.introNarrative + " " + currentLocation.ghostHaiku[0]);
+  if (currentLocation.playerHaiku) {
+    ghostProceedings(currentLocation);
+    $(".haikuInput").hide();
+    $(".narrative").hide();
+  }
 }
 
 function ghostProceedings(currentLocation){
+  clientMapLocation.setCompleted();
   $(".haiku2").show();
   $(".haiku1").show();
 
   $(".haiku2").text(currentLocation.ghostHaiku[0] + "\n" + currentLocation.ghostHaiku[1] + "\n" + currentLocation.ghostHaiku[2]);
 
-  $(".haiku1").text(currentLocation.playerHaiku[0] + "\n" + currentLocation.playerHaiku[1] + "\n" + currentLocation.playerHaiku[2])
-  //diplay ghost interlude
-  //put master haiku in haiku2
-  //display button for back to map or whatever
+  $(".haiku1").text(currentLocation.playerHaiku[0] + "\n" + currentLocation.playerHaiku[1] + "\n" + currentLocation.playerHaiku[2]);
   $("#backToMap").show();
 }
-
 
 //to do LIST:
 
 //figure out how to set background location css in js
+//hide narrative show 'ghost approaching' after submit
